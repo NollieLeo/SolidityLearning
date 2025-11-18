@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test/test.sol": "ComplexDataLearning"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test/test.sol": {
+			"keccak256": "0xa57ad10121e17a36ef7c59fd44838664370638dd6fc38d02589c72954dab3121",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0175e1692f991579cde375604b56e8740f9dceca30a221804d61a2476f2e1846",
+				"dweb:/ipfs/QmTb1z7SsKe7zjvsWAFiR3aE6hAs31YXcPtzUni1zLPJko"
+			]
+		}
+	},
+	"version": 1
+}
