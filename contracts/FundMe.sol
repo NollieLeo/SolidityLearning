@@ -22,10 +22,15 @@ contract FundMe {
 
     address public owner;
 
+    address erc20;
+
     AggregatorV3Interface internal dataFeed;
 
     uint256 deployTimestamp;
     uint256 lockTimestamp;
+
+    // flag 是否被提取了
+    bool public getFundSuccess;
 
     constructor(uint256 _lockTimestamp) {
         dataFeed = AggregatorV3Interface(SEPOLIA_ETH_TO_USD_TEST_NET);
@@ -91,6 +96,9 @@ contract FundMe {
         // 🌟transfer: transfer ETH and revert if tx failed
         payable(owner).transfer(allBalance);
 
+        getFundSuccess = true;
+        fundersToAmount[msg.sender] = 0;
+
         // 🌟send: transfer ETH and return false if tx failed
         // bool success = payable(owner).send(allBalance)
 
@@ -106,6 +114,15 @@ contract FundMe {
         (bool success, ) = payable(msg.sender).call{value: funderAmount}("");
         require(success, "failed to transfer");
         fundersToAmount[msg.sender] = 0;
+    }
+
+    function setFunderToAmount(address funder, uint256 amount) external {
+        require(msg.sender == erc20, "You have no permission");
+        fundersToAmount[funder] = amount;
+    }
+
+    function setERC20Address(address erc20Addr) public OnlyOwner {
+        erc20 = erc20Addr;
     }
 
     modifier WindowClosedRequired() {
